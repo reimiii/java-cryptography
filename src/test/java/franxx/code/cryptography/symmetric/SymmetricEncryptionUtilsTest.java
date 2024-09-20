@@ -1,4 +1,4 @@
-package franxx.code.cryptography;
+package franxx.code.cryptography.symmetric;
 
 import org.junit.jupiter.api.Test;
 
@@ -10,11 +10,11 @@ import static jakarta.xml.bind.DatatypeConverter.printHexBinary;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-class SymmetricEncryptionUtilTest {
+class SymmetricEncryptionUtilsTest {
 
   @Test
   void createAESKey() throws Exception {
-    SecretKey secretKey = SymmetricEncryptionUtil.createAESKey();
+    SecretKey secretKey = SymmetricEncryptionUtils.createAESKey();
     assertNotNull(secretKey);
     System.out.println(printHexBinary(secretKey.getEncoded()));
   }
@@ -22,21 +22,21 @@ class SymmetricEncryptionUtilTest {
   @Test
   void testInitVector() {
     for (int i = 0; i < 5; i++) {
-      byte[] bytes = SymmetricEncryptionUtil.createInitVector();
+      byte[] bytes = SymmetricEncryptionUtils.createInitVector();
       System.out.println(Arrays.toString(bytes));
     }
   }
 
   @Test
   void testAESCryptoRoutine() throws Exception {
-    SecretKey key = SymmetricEncryptionUtil.createAESKey();
+    SecretKey key = SymmetricEncryptionUtils.createAESKey();
     System.out.println("secret key: " + printHexBinary(key.getEncoded()));
 
-    byte[] initVector = SymmetricEncryptionUtil.createInitVector();
+    byte[] initVector = SymmetricEncryptionUtils.createInitVector();
     System.out.println("Init Vector: " + printHexBinary(initVector));
 
     String plainText = "this is text mana ada lahh...";
-    byte[] cipherText = SymmetricEncryptionUtil.performAESEncryption(
+    byte[] cipherText = SymmetricEncryptionUtils.performAESEncryption(
         plainText, key, initVector
     );
 
@@ -46,7 +46,7 @@ class SymmetricEncryptionUtilTest {
     System.out.println("hex: " + hexBinary);
     System.out.println("base64: " + base64Binary);
 
-    String decryption = SymmetricEncryptionUtil.performAESDecryption(cipherText, key, initVector);
+    String decryption = SymmetricEncryptionUtils.performAESDecryption(cipherText, key, initVector);
 
     assertEquals(plainText, decryption);
 

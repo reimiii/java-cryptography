@@ -1,4 +1,4 @@
-package franxx.code.cryptography;
+package franxx.code.cryptography.symmetric;
 
 import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
@@ -7,7 +7,7 @@ import javax.crypto.spec.IvParameterSpec;
 import java.nio.charset.StandardCharsets;
 import java.security.SecureRandom;
 
-public class SymmetricEncryptionUtil {
+public class SymmetricEncryptionUtils {
 
   // Enkripsi yang pake kunci yang sama buat enkripsi dan dekripsi
   private static final String AES = "AES";
