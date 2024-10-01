@@ -1,5 +1,7 @@
 package franxx.code.cryptography.hash;
 
+import org.mindrot.jbcrypt.BCrypt;
+
 import java.io.ByteArrayOutputStream;
 import java.security.MessageDigest;
 import java.security.SecureRandom;
@@ -24,5 +26,13 @@ public class HashUtils {
 
     MessageDigest messageDigest = MessageDigest.getInstance(SHA2_ALGORITHM);
     return messageDigest.digest(valueToHash);
+  }
+
+  public static String hashPassword(String password) {
+    return BCrypt.hashpw(password, BCrypt.gensalt());
+  }
+
+  public static boolean verifyPassord(String password, String hashedPassword) {
+    return BCrypt.checkpw(password, hashedPassword);
   }
 }

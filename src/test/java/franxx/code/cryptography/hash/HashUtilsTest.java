@@ -49,4 +49,12 @@ class HashUtilsTest {
     );
 
   }
+
+  @Test
+  void testPasswordRoutine() {
+    String secretPhrase = "correct horse battery staple";
+    String passwordHash = HashUtils.hashPassword(secretPhrase);
+    System.out.println(passwordHash);
+    assertTrue(HashUtils.verifyPassord(secretPhrase, passwordHash));
+  }
 }
