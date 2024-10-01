@@ -46,7 +46,9 @@ class SymmetricEncryptionUtilsTest {
     System.out.println("hex: " + hexBinary);
     System.out.println("base64: " + base64Binary);
 
-    String decryption = SymmetricEncryptionUtils.performAESDecryption(cipherText, key, initVector);
+    String decryption = SymmetricEncryptionUtils.performAESDecryption(
+        cipherText, key, initVector
+    );
 
     assertEquals(plainText, decryption);
 
